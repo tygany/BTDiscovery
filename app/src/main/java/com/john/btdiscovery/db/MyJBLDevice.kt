@@ -1,23 +1,26 @@
-package jbl.stc.com.database.myproducts
+package com.john.btdiscovery.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "MyJBLDevice")
 class MyJBLDevice(
-        @PrimaryKey
-        val index: Int,
 
-        @ColumnInfo(name = "btMac")
-        val btMac: String?,
+    @PrimaryKey
+    var btMac: String,
 
-        @ColumnInfo(name = "connectStatus")
-        val connectStatus: Int,
+    @ColumnInfo(name = "connectStatus")
+    var connectStatus: Int,
 
-        @ColumnInfo(name = "colorId")
-        val colorId: Int,
+    @ColumnInfo(name = "colorId")
+    var colorId: Int,
 
-        @ColumnInfo(name = "deviceName")
-        val deviceName: String?
-)
+    @ColumnInfo(name = "deviceName")
+    var deviceName: String
+) {
+
+    override fun toString(): String {
+        return "\nMyJBLDevice(btMac='$btMac', connectStatus=$connectStatus, colorId=$colorId, deviceName='$deviceName')"
+    }
+}

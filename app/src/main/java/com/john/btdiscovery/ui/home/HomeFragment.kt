@@ -27,15 +27,26 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-        activity?.let {
-            Scan.start(it)
-        }
+
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity?.let {
+            Scan.discovery(it)
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        activity?.let {
+            Scan.cancelDiscovery(it)
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-
     }
 
 
